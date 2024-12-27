@@ -1,0 +1,20 @@
+# Ignore the node_modules folder
+node_modules/
+
+# Ignore the package-lock.json file
+package-lock.json
+
+# Ignore log files
+*.log
+
+# Ignore TypeScript output files
+*.js
+*.js.map
+
+# Ignore temporary files
+.DS_Store
+Thumbs.db
+
+# Ignore editor configuration files like VSCode
+.vscode/
+.idea/
