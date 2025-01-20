@@ -57,3 +57,15 @@ This is typically used for creating secure HTTPS connections in testing or devel
 - **Security Warning**: Self-signed certificates are not trusted by browsers or operating systems by default. Users will encounter warnings when accessing a website secured with this certificate.
 - **Production Use**: For production systems, always use a CA-signed certificate to avoid trust issues.
 - **Dependencies**: Ensure that OpenSSL is installed on your system before running the command.
+
+# Adding Helmet to the project
+
+```bash
+npm i helmet
+```
+
+```javascript
+app.use(helmet());
+```
+
+is equivalent to adding a banch a of middlewares that each protect against one type of security issue

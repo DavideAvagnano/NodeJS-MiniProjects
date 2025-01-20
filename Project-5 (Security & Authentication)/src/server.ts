@@ -3,8 +3,9 @@ import path from "path";
 import https from "https";
 import express from "express";
 import dotenv from "dotenv";
+import helmet from "helmet";
 
-// CONFIGURATION
+// CONFIGURATION & MIDDLEWARES
 dotenv.config();
 
 const app = express();
@@ -15,6 +16,8 @@ const server = https.createServer(
   },
   app
 );
+
+app.use(helmet());
 
 // ROUTES
 app.get("/", (req: express.Request, res: express.Response) => {
