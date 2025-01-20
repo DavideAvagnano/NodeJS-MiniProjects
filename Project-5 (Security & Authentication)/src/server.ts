@@ -1,7 +1,20 @@
-import express from "express";
+import fs from "fs";
 import path from "path";
+import https from "https";
+import express from "express";
+import dotenv from "dotenv";
+
+// CONFIGURATION
+dotenv.config();
 
 const app = express();
+const server = https.createServer(
+  {
+    key: fs.readFileSync("key.pem"),
+    cert: fs.readFileSync("cert.pem"),
+  },
+  app
+);
 
 // ROUTES
 app.get("/", (req: express.Request, res: express.Response) => {
@@ -11,9 +24,9 @@ app.get("/", (req: express.Request, res: express.Response) => {
 app.get("/secret", (req: express.Request, res: express.Response) => {
   return res.send("Your personal secret value is 54!");
 });
-// sent by http by default --> the connection to this API is not secure and not encrypted
 
+// SERVER
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
